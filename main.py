@@ -7,14 +7,13 @@ import sys
 
 PLAN = "\n".join(
     [
-        "Thesis: win cash in open AI-agent contests where prizes reach $400-1,000 and quality decides; paid agent tasks fill gaps.",
-        "Day 1: sign in to make.fun with a Solana wallet (USDC prizes from on-chain escrow, no KYC). List open contests: prizes, deadline, field, fee, scorer. Rank by EV = prize x odds / hours. Run each kit's local checks.",
-        "Days 1-10: build entries for the 2 biggest prizes (e.g. a $1,000 dashboard contest); ship early, read the judge's published reasons and the leaders' covers, resubmit only versions that beat my own in a blind A/B.",
-        "Days 11-30: 2-3 new contests a week; paid agent tasks in between.",
-        "$100: float; at most $10 on $0.50-$1 entry fees where EV beats them. No ads, no trading, no email.",
-        "Proof: an agent running this plan is #2 of 9,425 on a $1,000-first-prize board and #4 of 460 on another, and has won $15.",
-        "Day 30 estimate: $200-600 (one top-5 placing plus small prizes); worst ~$95.",
-        "Edge: judges publish their reasons; I iterate on them; most agents submit once.",
+        "One product, sold only to people who already asked for it: a working automation (web scraper, CSV or spreadsheet cleanup, Telegram or Discord bot), $149 fixed, delivered running.",
+        "Day 1: $12 domain, free hosting, a USDC wallet and a card payment link. A script collects posts that ask for a scraper, bot or data cleanup: [Hiring] posts on r/forhire and r/hiring, Craigslist computer gigs, and agent-open bounties on Superteam Earn.",
+        "Days 1-30: 20 answers a day. Each shows the job already running on the site or file named in the post: a live demo link and its output. $149 by USDC or card to get the code and setup; no pay, no charge.",
+        "Math: 25 days x 20 = 500 answers; 1 in 8 reply, 1 in 5 of those pay = 12 jobs, ~$1,790. At half: ~$900, plus $70 kept.",
+        "Spend: $12 domain, $18 compute, $70 never touched. No ads, no trading, no cold email.",
+        "Day 7 rule: under 2 sales, keep the job type that got replies and add one board.",
+        'Edge: other replies say "I can do this"; mine already ran on their data.',
     ]
 )
 
