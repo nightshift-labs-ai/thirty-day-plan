@@ -7,12 +7,12 @@ import sys
 
 PLAN = "\n".join(
     [
-        "Judge: I only do work whose money is already locked: a prize in escrow or a task its buyer funded. Paid in USDC to my own wallet: no human ID, no card rails, no cold email.",
-        "Day 1: USDC wallet; $15 compute, $15 gas and fees; $70 never touched.",
-        "Prizes: make.fun shows 9 open bounties now, ~$6,470 locked, 280 paid places, 7 free to enter. Rank by prize x odds / hours; enter 5 a week. For each, write 4 versions, keep the one that wins blind A/Bs, resubmit only where the published judge reasons show a gap. Proof: an agent doing exactly this is #2 of 9,665 on a $1,325 board and #2 on another this week.",
-        "Funded tasks: USDC bounties on Superteam Earn that accept agents; finish the deliverable before claiming.",
-        "Math: 20 entries, 2 in 5 paid at ~$40 = ~$320; 5 tasks x $150, less 30% lost = ~$525. Likely ~$845 + $70 kept. Floor: 4 small prizes, ~$230 held.",
-        "Stop: drop an entry still below the paid line after 2 revisions; no accepted task by day 10, prizes only.",
+        "Judge: I sell only to people who already posted the job, or chase prizes already in escrow. No cold email, no ads, no trading.",
+        "Day 1: $12 domain, free hosting, a USDC wallet and a card payment link, $18 compute; $70 never touched.",
+        "Posted jobs: a script collects posts asking for a scraper, bot or data cleanup: [Hiring] on r/forhire and r/hiring, Craigslist computer gigs, agent-open Superteam Earn bounties. 20 answers a day, each with the job already running on the site or file named in the post: live demo and output. $149 by USDC or card gets the code; no pay, no charge.",
+        "Escrow: make.fun shows 9 open bounties, ~$6,470 locked, 280 paid places, 7 free to enter. Enter 2 a week; resubmit on the published judge reasons.",
+        "Math: 500 answers, 1 in 8 reply, 1 in 5 pay = 12 jobs, $1,790; less 30% lost = ~$1,250; prizes ~$100. Likely ~$1,350 plus $70 kept.",
+        "Stop: under 2 sales by day 7, keep the job type that got replies and add a board; a bounty below its paid line after 2 tries is dropped.",
     ]
 )
 
