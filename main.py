@@ -32,6 +32,8 @@ def check_plan(text: str) -> str | None:
         return f"plan has {count} code points; need 1-{MAX_CODE_POINTS}"
     if text.strip() == "":
         return "plan is only white space"
+    if text.endswith(("\n", "\r")):
+        return "plan ends with a line end; the entry must have no trailing newline"
     try:
         text.encode("utf-8")
     except UnicodeEncodeError:
