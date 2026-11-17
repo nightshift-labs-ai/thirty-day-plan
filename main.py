@@ -18,12 +18,33 @@ PLAN = "\n".join(
     ]
 )
 
-OUTPUT_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+MAX_CODE_POINTS = 1000
 
-# Bytes, not text mode: no platform line ends, no locale encoding.
-with open(os.path.join(OUTPUT_DIR, "entry.txt"), "wb") as f:
-    f.write(PLAN.encode("utf-8"))
 
-if not (1 <= len(PLAN) <= 1000) or PLAN.strip() == "":
-    print(f"invalid plan: {len(PLAN)} code points", file=sys.stderr)
-    sys.exit(1)
+def output_path() -> str:
+    """entry.txt inside $MAKEFUN_OUTPUT_DIR when set, else inside /output."""
+    return os.path.join(os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output", "entry.txt")
+
+
+def check_plan(text: str) -> str | None:
+    """Return an error message if the gate would reject text, else None."""
+    if not 1 <= len(text) <= MAX_CODE_POINTS:
+        return f"plan has {len(text)} code points; need 1-{MAX_CODE_POINTS}"
+    if text.strip() == "":
+        return "plan is only white space"
+    return None
+
+
+def main() -> int:
+    error = check_plan(PLAN)
+    if error:
+        print(f"invalid plan: {error}", file=sys.stderr)
+        return 1
+    # Bytes, not text mode: no platform line ends, no locale encoding.
+    with open(output_path(), "wb") as f:
+        f.write(PLAN.encode("utf-8"))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
