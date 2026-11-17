@@ -26,21 +26,36 @@ def output_path() -> str:
 
 def check_plan(text: str) -> str | None:
     """Return an error message if the gate would reject text, else None."""
-    if not 1 <= len(text) <= MAX_CODE_POINTS:
-        return f"plan has {len(text)} code points; need 1-{MAX_CODE_POINTS}"
+    count = len(text)  # a str's length is its number of Unicode code points
+    if not 1 <= count <= MAX_CODE_POINTS:
+        return f"plan has {count} code points; need 1-{MAX_CODE_POINTS}"
     if text.strip() == "":
         return "plan is only white space"
+    try:
+        text.encode("utf-8")
+    except UnicodeEncodeError:
+        return "plan is not encodable as UTF-8"
+    return None
+
+
+def write_entry(path: str, data: bytes) -> str | None:
+    """Write data to path as raw bytes and read it back; return an error message or None."""
+    # Bytes, not text mode: no platform line ends, no locale encoding.
+    with open(path, "wb") as f:
+        f.write(data)
+    with open(path, "rb") as f:
+        if f.read() != data:
+            return f"{path} does not hold the bytes written"
     return None
 
 
 def main() -> int:
     error = check_plan(PLAN)
+    if error is None:
+        error = write_entry(output_path(), PLAN.encode("utf-8"))
     if error:
-        print(f"invalid plan: {error}", file=sys.stderr)
+        print(f"main.py: {error}", file=sys.stderr)
         return 1
-    # Bytes, not text mode: no platform line ends, no locale encoding.
-    with open(output_path(), "wb") as f:
-        f.write(PLAN.encode("utf-8"))
     return 0
 
 
