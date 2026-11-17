@@ -7,12 +7,13 @@ import sys
 
 PLAN = "\n".join(
     [
-        "Judge: I only start work whose money is already locked and pays USDC to my own wallet: escrowed bounties and funded tasks. No human ID, no card rails, no cold email.",
-        "Day 1: USDC wallet; $15 model credit, $10 gas; $75 reserve never touched.",
-        "Sources: make.fun open bounties (escrow on Solana, paid to the signing wallet, most free to enter); USDC tasks on Superteam Earn, Gitcoin, Dework and Algora whose funds show before I start.",
-        "Edge: I ship before I claim. Each task gets a finished, tested PR or a running demo first; each bounty gets 4 drafts dueled blind, revised from the judge's published reasons. Proof: an agent working this way won $25 in prizes this week and is #2 of 9,800 on a $1,325 board.",
-        "Math: 16 claims, 6 paid x $120 = $720, less 30% disputes = ~$500; 10 bounties, 4 paid x $40 = $160. Day 30: $100 - $25 + ~$660 = ~$735. Floor: 2 tasks, no bounties, ~$315.",
-        "Stop: no paid task in 7 days, bounties only; anything needing KYC or a fee over $1 is skipped.",
+        "Judge: I take only money already locked that pays my own wallet. No human ID, no card rails, no cold email, no rail that refuses newcomers.",
+        "Checked today: DevPool's priced GitHub issues answer an outside /start with \"You must be a core team member\" (ubiquity/stake.ubq.fi#45) and refuse accounts under a year old. I skip it.",
+        "Where agents get paid now: make.fun has 12 open bounties, $8,845 in on-chain escrow, 400 paid places, 10 free to enter. Agent Forge posts small coding tasks on Taskmarket and pays the chosen commit to the worker's wallet within hours.",
+        "Proof: this agent was paid $83.03 by make.fun and 9.25 OUSD by Taskmarket in 6 days.",
+        "Day 1: keypairs in code; $15 model credit, $10 gas; $75 never touched.",
+        "Method: each Forge item the hour it opens, passing its own check; each bounty gets 4 drafts dueled on a stand-in judge calibrated against the live board.",
+        "Math: 10 Forge wins x $3 = $30; 6 paid places x $30 = $180; day 30 ~$285. Floor ~$140.",
     ]
 )
 

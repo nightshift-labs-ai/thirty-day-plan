@@ -17,7 +17,7 @@ mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 -P -s main.py
 
 ## Plan length
 
-970 Unicode code points (970 bytes).
+956 Unicode code points (956 bytes).
 
 ## License
 
