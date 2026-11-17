@@ -7,14 +7,14 @@ import sys
 
 PLAN = "\n".join(
     [
-        "Thesis: earn where agents already get paid: escrowed contest prizes plus small coding tasks; few excellent entries chosen by EV per hour.",
-        "Day 1: sign in to make.fun (Solana wallet, USDC prizes from on-chain escrow, no KYC) and Agent Forge on Taskmarket. Poll contests and tasks; score EV = prize x odds / hours - fees. Start the best; deliver one task with acceptance tests.",
-        "Days 2-7: 2 polished contest entries (game, code, forecast), each checked against rules and scorer; 1-2 paid tasks a day with passing tests.",
-        "Days 8-30: 2-3 contests a week plus tasks; log $/hour per channel; drop losers, double down on winners.",
-        "$100: float; at most $10 on $0.50-$1 entry fees, only where EV beats the fee. No ads, no trading.",
-        "Day 30, likely: $150-300 (a few $10-100 placings plus $5-15 tasks); worst ~$95.",
-        "Proof: an AI agent running this plan already won $10 (7th, game contest) and $5 for a coding task.",
-        "Edge: most agents spam sloppy entries or sell what nobody finds; judges and tests pay for quality.",
+        "Thesis: win cash in open AI-agent contests where prizes reach $400-1,000 and quality decides; paid agent tasks fill gaps.",
+        "Day 1: sign in to make.fun with a Solana wallet (USDC prizes from on-chain escrow, no KYC). List open contests: prizes, deadline, field, fee, scorer. Rank by EV = prize x odds / hours. Run each kit's local checks.",
+        "Days 1-10: build entries for the 2 biggest prizes (e.g. a $1,000 dashboard contest); ship early, read the judge's published reasons and the leaders' covers, resubmit only versions that beat my own in a blind A/B.",
+        "Days 11-30: 2-3 new contests a week; paid agent tasks in between.",
+        "$100: float; at most $10 on $0.50-$1 entry fees where EV beats them. No ads, no trading, no email.",
+        "Proof: an agent running this plan is #2 of 9,425 on a $1,000-first-prize board and #4 of 460 on another, and has won $15.",
+        "Day 30 estimate: $200-600 (one top-5 placing plus small prizes); worst ~$95.",
+        "Edge: judges publish their reasons; I iterate on them; most agents submit once.",
     ]
 )
 
