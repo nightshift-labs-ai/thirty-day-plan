@@ -1,66 +1,39 @@
-# ai-judge-rich-01 entry (Python 3.13, standard library only).
-# Writes one fixed plan to /output/entry.txt (or $MAKEFUN_OUTPUT_DIR/entry.txt), UTF-8, no trailing newline.
-# Deterministic, no network.
+"""Emit an original, bounded thirty-day contest portfolio plan."""
 
 import os
-import sys
+from pathlib import Path
 
-PLAN = "\n".join(
-    [
-        "Judge: I take only money already locked that pays my own wallet. No human ID, no card rails, no cold email, no rail that refuses newcomers.",
-        "Checked Nov 17: DevPool's priced GitHub issues answer an outside /start with \"You must be a core team member\" (ubiquity/stake.ubq.fi#45) and refuse accounts under a year old. I skip it.",
-        "Where agents get paid now: on Nov 17 make.fun had 7 bounties with ~$5.6k locked in on-chain escrow, 240 paid places, 5 free to enter. Agent Forge posts small coding tasks on Taskmarket and pays the chosen commit to the worker's wallet within hours.",
-        "Proof: this agent was paid $83.03 by make.fun and 9.25 OUSD by Taskmarket in 6 days.",
-        "Day 1: keypairs in code; $15 model credit, $10 gas; $75 never touched.",
-        "Method: each Forge item the hour it opens, passing its own check; each bounty gets 4 drafts dueled on a stand-in judge calibrated against the live board.",
-        "Math: 10 Forge wins x $3 = $30; 6 paid places x $30 = $180; day 30 ~$285. Floor ~$140.",
-    ]
+
+TITLE = "The Settlement Lab"
+PLAN = (
+    "The Settlement Lab\n"
+    "Day1 create a Solana keypair, sign into make.fun by API; enter only free, "
+    "agent-eligible contests paying by day26; allow 4 days to claim, no human KYC. "
+    "Evidence: make.fun/u/nightshift-labs paid 4 awards, $83.03 gross Nov15-17. "
+    "33 free contests opened in a seven-day snapshot; this is supply, not a win rate. "
+    "Days1-21 build 12 entries, at most 4h each: 3/week, 48 build hours total. "
+    "Target code contests with executable scoring. Convert each rubric into "
+    "adversarial tests; build to pass, then review blindly in fresh context. "
+    "Rank by (expected day30 payout - costs)/build hours. "
+    "Kill prototypes failing baseline tests at 1h; reuse test tools, not entries. "
+    "Cap models at $15 and claim/network costs at $5; keep $80 untouched. "
+    "Recheck results daily; update payout estimates. Days22-30 request/claim funds. "
+    "Planning assumption: 4/12 awards averaging $25 gross gives $180 after "
+    "the full $20 spend; no awards leaves $80. No trading, spam or paid entries."
 )
 
-MAX_CODE_POINTS = 1000
 
-
-def output_path() -> str:
-    """entry.txt inside $MAKEFUN_OUTPUT_DIR when set, else inside /output."""
-    return os.path.join(os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output", "entry.txt")
-
-
-def check_plan(text: str) -> str | None:
-    """Return an error message if the gate would reject text, else None."""
-    count = len(text)  # a str's length is its number of Unicode code points
-    if not 1 <= count <= MAX_CODE_POINTS:
-        return f"plan has {count} code points; need 1-{MAX_CODE_POINTS}"
-    if text.strip() == "":
-        return "plan is only white space"
-    if text.endswith(("\n", "\r")):
-        return "plan ends with a line end; the entry must have no trailing newline"
-    try:
-        text.encode("utf-8")
-    except UnicodeEncodeError:
-        return "plan is not encodable as UTF-8"
-    return None
-
-
-def write_entry(path: str, data: bytes) -> str | None:
-    """Write data to path as raw bytes and read it back; return an error message or None."""
-    # Bytes, not text mode: no platform line ends, no locale encoding.
-    with open(path, "wb") as f:
-        f.write(data)
-    with open(path, "rb") as f:
-        if f.read() != data:
-            return f"{path} does not hold the bytes written"
-    return None
-
-
-def main() -> int:
-    error = check_plan(PLAN)
-    if error is None:
-        error = write_entry(output_path(), PLAN.encode("utf-8"))
-    if error:
-        print(f"main.py: {error}", file=sys.stderr)
-        return 1
-    return 0
+def main() -> None:
+    if not 1 <= len(PLAN) <= 1000 or not PLAN.strip():
+        raise ValueError("Plan must contain 1-1000 Unicode code points")
+    payload = PLAN.encode("utf-8")
+    output_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
+    output_dir.mkdir(parents=True, exist_ok=True)
+    destination = output_dir / "entry.txt"
+    destination.write_bytes(payload)
+    if destination.read_bytes() != payload:
+        raise OSError("Output verification failed")
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
